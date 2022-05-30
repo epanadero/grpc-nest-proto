@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package person;
+
+service PersonService {
+    rpc CreatePerson (CreatePersonRequest) returns (CreatePersonResponse) {}
+}
+
+message CreatePersonRequest {
+    string personal_number = 1;
+    string name = 2;
+    string surname = 3;
+    string email = 4;
+    string username = 5;
+}
+
+message CreatePersonResponse {
+    int32 status = 1;
+    repeated string error = 2;
+    int32 id = 3;
+}

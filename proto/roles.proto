@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package roles;
+
+service RolesService {
+    rpc CreateRole (CreateRoleRequest) returns (CreateRoleResponse) {};
+    rpc FindRole (FindRoleRequest) returns (FindRoleResponse) {};
+    rpc AssignRole (AssignRoleRequest) returns (AssignRoleResponse) {};
+}
+
+// Create Role
+
+message CreateRoleRequest {
+    string name = 1;
+    int32 person = 2;
+}
+
+message CreateRoleResponse {
+    int32 status = 1;
+    repeated string error = 2;
+    int32 id = 3;
+}
+
+// Find Role
+
+message FindRoleData {
+    int32 id = 1;
+    string name = 2;
+}
+
+message FindRoleRequest {
+    int32 id = 1;
+}
+
+message FindRoleResponse {
+    int32 status = 1;
+    repeated string error = 2;
+    FindRoleData data = 3;
+}
+
+// Assign Role
+
+message AssignRoleRequest {
+    int32 personId = 1;
+}
+
+message AssignRoleResponse {
+    int32 status = 1;
+    repeated string error = 2;
+    int32 id = 3;
+}
